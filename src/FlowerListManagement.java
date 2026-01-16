@@ -16,10 +16,10 @@ public class FlowerListManagement {
 
     public void removePlant(int index) throws PlantException {
         if (index < 0 || index >= plants.size()) {
-            throw new PlantException("Neplatný index: " + index);
+            throw new PlantException("Invalid index: " + index);
         }
         plants.remove(index);
-        System.out.println("Rostlina číslo " + (index + 1) + " byla prodána");
+        System.out.println("Plant number" + (index + 1) + " was sold");
     }
 
     public void addAllPlants(List<Plant> plants) {
@@ -45,7 +45,7 @@ public class FlowerListManagement {
                 if (!record.isEmpty()) {
                     parts = record.split(delimiter);
                     try {
-                        // Nové pořadí: name, notes, frequency, watering, planted
+
                         String name = parts[0].trim();
                         String notes = parts[1].trim();
                         Integer frequency = Integer.parseInt(parts[2].trim());
@@ -55,12 +55,12 @@ public class FlowerListManagement {
                         Plant plant = new Plant(name, notes, planted, watering, frequency);
                         plants.add(plant);
                     } catch (Exception e) {
-                        throw new PlantException("Chyba na řádku " + lineNumber + ": " + e.getMessage(), e);
+                        throw new PlantException("Error on line" + lineNumber + ": " + e.getMessage(), e);
                     }
                 }
             }
         } catch (FileNotFoundException e) {
-            throw new PlantException("Soubor '" + filePath + "' nelze otevřít: " + e.getLocalizedMessage());
+            throw new PlantException("File" + filePath + " cannot be opened:" + e.getLocalizedMessage());
         }
         System.out.println("Line " + lineNumber + ": " + Arrays.toString(parts));
     }
@@ -71,7 +71,7 @@ public class FlowerListManagement {
                 writer.println(plant.toTextRecord(delimiter));
             }
         } catch (IOException e) {
-            throw new PlantException("Chyba při zápisu do souboru: " + e.getMessage());
+            throw new PlantException("Error writing to file: " + e.getMessage());
         }
     }
 

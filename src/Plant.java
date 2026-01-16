@@ -19,7 +19,7 @@ public class Plant implements Comparable<Plant> {
         setFrequencyOfWatering(frequencyOfWatering);
 
         if (watering.isBefore(planted)) {
-            throw new PlantException("Datum zalití nemůže nastat dřív než datum zasazení.");
+            throw new PlantException("The date of pouring cannot be earlier than the date of planting.");
         }
 
         setFrequencyOfWateringException(frequencyOfWatering);
@@ -39,8 +39,8 @@ public class Plant implements Comparable<Plant> {
 
     public String getWateringInfo() {
         LocalDate nextWatering = watering.plusDays(frequencyOfWatering);
-        return "Rostlina " + name + " byla naposledy zalita " + watering +
-                ".\nDoporučené příští zalití je: " + nextWatering + ".";
+        return "Plant " + name + " was last watered " + watering +
+                ".\nThe recommended next watering is:" + nextWatering + ".";
     }
 
     public void doWateringNow() {
@@ -52,9 +52,9 @@ public class Plant implements Comparable<Plant> {
     public void whenToWater() {
         LocalDate nextWatering = this.watering.plusDays(this.frequencyOfWatering);
         if (!nextWatering.isAfter(LocalDate.now())) {
-            System.out.println("Je čas zalít rostlinu: " + this.name);
+            System.out.println("It's time to water the plant:" + this.name);
         } else {
-            System.out.println("Není třeba ještě zalévat: " + this.name);
+            System.out.println("There's no need to water yet:" + this.name);
         }
     }
 
@@ -66,7 +66,7 @@ public class Plant implements Comparable<Plant> {
 
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Název nesmí být prázdný.");
+            throw new IllegalArgumentException("The name cannot be empty.");
         }
         this.name = name.trim();
     }
@@ -85,7 +85,7 @@ public class Plant implements Comparable<Plant> {
 
     public void setFrequencyOfWatering(Integer frequencyOfWatering) {
         if (frequencyOfWatering == null || frequencyOfWatering <= 0) {
-            throw new IllegalArgumentException("Frekvence musí být větší než 0.");
+            throw new IllegalArgumentException("The frequency must be greater than 0.");
         }
         this.frequencyOfWatering = frequencyOfWatering;
     }
@@ -96,7 +96,7 @@ public class Plant implements Comparable<Plant> {
 
     public void setFrequencyOfWateringException(Integer frequencyOfWateringException) {
         if (frequencyOfWateringException == null || frequencyOfWateringException <= 0) {
-            throw new IllegalArgumentException("Výjimková frekvence musí být větší než 0.");
+            throw new IllegalArgumentException("The exception frequency must be greater than 0.");
         }
         this.frequencyOfWateringException = frequencyOfWateringException;
     }
@@ -107,7 +107,7 @@ public class Plant implements Comparable<Plant> {
 
     public void setPlanted(LocalDate planted) {
         if (planted == null) {
-            throw new IllegalArgumentException("Datum zasazení nesmí být null.");
+            throw new IllegalArgumentException("The planting date must not be null.");
         }
         this.planted = planted;
     }
@@ -118,7 +118,7 @@ public class Plant implements Comparable<Plant> {
 
     public void setWatering(LocalDate watering) {
         if (watering == null) {
-            throw new IllegalArgumentException("Datum zalití nesmí být null.");
+                throw new IllegalArgumentException("The pouring date must not be null.");
         }
         this.watering = watering;
     }
@@ -129,7 +129,7 @@ public class Plant implements Comparable<Plant> {
 
     public void setDateOfLastWatering(LocalDate dateOfLastWatering) {
         if (dateOfLastWatering == null) {
-            throw new IllegalArgumentException("Datum poslední zálivky nesmí být null.");
+            throw new IllegalArgumentException("The date of the last watering must not be null.");
         }
         this.dateOfLastWatering = dateOfLastWatering;
     }

@@ -11,17 +11,17 @@ public class Main {
                 System.out.println(plant.getWateringInfo());
             }
         } catch (PlantException e) {
-            System.err.println("Chyba: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
 
         try {
 
-            manager.addPlant(new Plant("Ruze", "cervena", LocalDate.of(2025, 8, 14), LocalDate.of(2025, 8, 14), 7));
+            manager.addPlant(new Plant("Rose", "red", LocalDate.of(2025, 8, 14), LocalDate.of(2025, 8, 14), 7));
 
             for (int i = 1; i <= 10; i++) {
                 manager.addPlant(new Plant(
-                        "Tulipan",
-                        "Tulipán na prodej " + i,
+                        "Tulip",
+                        "Tulip for sale" + i,
                         LocalDate.now(),
                         LocalDate.now(),
                         14
@@ -32,10 +32,10 @@ public class Main {
             manager.sortFlowers();
             manager.writeToTextFile(Settings.getNewFilePath(), Settings.getDelimiter());
 
-            System.out.println("Zápis do nového souboru také proběhl.");
+            System.out.println("The writing to the new file was also successful.");
 
         } catch (PlantException e) {
-            System.err.println("Chyba při zápisu nebo úpravě: " + e.getMessage());
+            System.err.println("Error while writing or editing: " + e.getMessage());
         }
     }
 }
