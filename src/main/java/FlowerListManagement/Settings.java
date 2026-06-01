@@ -1,3 +1,6 @@
+package FlowerListManagement;
+
+
 public final class Settings {
 
     private static final String ORIGINAL_FILE_PATH = "resources/PlantList.txt";
