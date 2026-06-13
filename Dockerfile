@@ -13,5 +13,7 @@ WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
 
+COPY resources ./resources
+
 CMD ["java", "-jar", "app.jar"]
 
